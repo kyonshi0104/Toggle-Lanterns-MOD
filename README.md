@@ -3,6 +3,8 @@
 A Fabric mod that allows you to toggle lanterns on and off.  
 ランタンを右クリックで消灯・点灯できるようにするFabric用Mod
 
+ダウンロードはこちら (Download here)：[Modrinth](https://modrinth.com/mod/toggle-lanterns)
+
 ---
 
 ## Overview
