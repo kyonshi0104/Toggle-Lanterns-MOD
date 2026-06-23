@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "toggle-lanterns:item/unlit_exposed_copper_lantern"
+  }
+}

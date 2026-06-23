@@ -1,34 +1,67 @@
 package com.kyonshi;
 
 import net.fabricmc.api.ModInitializer;
-
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.Identifier;
-
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.LanternBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-public class ToggleLanterns implements ModInitializer {
-	public static final String MOD_ID = "toggle-lanterns";
-	public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+import java.util.HashMap;
+import java.util.Map;
 
-	@Override
-	public void onInitialize() {
+public class ToggleLanterns implements ModInitializer {
+    public static final String MOD_ID = "toggle-lanterns";
+    public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
+
+    // 点灯 -> 消灯 の変換マップ
+    private static final Map<Block, Block> TO_UNLIT = new HashMap<>();
+    // 消灯 -> 点灯 の変換マップ
+    private static final Map<Block, Block> TO_LIT = new HashMap<>();
+
+    static {
+        // 鉄ランタン
+        registerPair(Blocks.LANTERN, ModBlocks.UNLIT_LANTERN);
+        registerPair(Blocks.SOUL_LANTERN, ModBlocks.UNLIT_SOUL_LANTERN);
+
+        // 銅ランタン
+        registerPair(Blocks.COPPER_LANTERN.unaffected(), ModBlocks.UNLIT_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.exposed(), ModBlocks.UNLIT_EXPOSED_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.weathered(), ModBlocks.UNLIT_WEATHERED_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.oxidized(), ModBlocks.UNLIT_OXIDIZED_COPPER_LANTERN);
+
+        // 銅ランタン（錆止め）
+        registerPair(Blocks.COPPER_LANTERN.waxed(), ModBlocks.UNLIT_WAXED_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.waxedExposed(), ModBlocks.UNLIT_WAXED_EXPOSED_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.waxedWeathered(), ModBlocks.UNLIT_WAXED_WEATHERED_COPPER_LANTERN);
+        registerPair(Blocks.COPPER_LANTERN.waxedOxidized(), ModBlocks.UNLIT_WAXED_OXIDIZED_COPPER_LANTERN);
+    }
+
+    private static void registerPair(Block lit, Block unlit) {
+        TO_UNLIT.put(lit, unlit);
+        TO_LIT.put(unlit, lit);
+    }
+
+    @Override
+    public void onInitialize() {
         ModBlocks.initialize();
 
         UseBlockCallback.EVENT.register((player, level, hand, hitResult) -> {
             BlockPos pos = hitResult.getBlockPos();
             BlockState state = level.getBlockState(pos);
-            if (state.is(Blocks.LANTERN)) {
+            Block currentBlock = state.getBlock();
+
+            if (TO_UNLIT.containsKey(currentBlock)) {
                 if (!level.isClientSide()) {
-                    BlockState newState = ModBlocks.UNLIT_LANTERN.defaultBlockState()
+                    Block targetUnlitBlock = TO_UNLIT.get(currentBlock);
+                    BlockState newState = targetUnlitBlock.defaultBlockState()
                             .setValue(LanternBlock.HANGING, state.getValue(LanternBlock.HANGING))
                             .setValue(LanternBlock.WATERLOGGED, state.getValue(LanternBlock.WATERLOGGED));
 
@@ -38,9 +71,10 @@ public class ToggleLanterns implements ModInitializer {
                 return InteractionResult.SUCCESS;
             }
 
-            if (state.is(ModBlocks.UNLIT_LANTERN)) {
+            if (TO_LIT.containsKey(currentBlock)) {
                 if (!level.isClientSide()) {
-                    BlockState newState = Blocks.LANTERN.defaultBlockState()
+                    Block targetLitBlock = TO_LIT.get(currentBlock);
+                    BlockState newState = targetLitBlock.defaultBlockState()
                             .setValue(LanternBlock.HANGING, state.getValue(LanternBlock.HANGING))
                             .setValue(LanternBlock.WATERLOGGED, state.getValue(LanternBlock.WATERLOGGED));
 
@@ -52,9 +86,9 @@ public class ToggleLanterns implements ModInitializer {
 
             return InteractionResult.PASS;
         });
-	}
+    }
 
-	public static Identifier id(String path) {
-		return Identifier.fromNamespaceAndPath(MOD_ID, path);
-	}
+    public static Identifier id(String path) {
+        return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    }
 }
