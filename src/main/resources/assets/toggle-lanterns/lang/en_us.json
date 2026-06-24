@@ -1,12 +1,4 @@
 {
   "block.toggle-lanterns.unlit_lantern": "Unlit Lantern",
-  "block.toggle-lanterns.unlit_soul_lantern": "Unlit Soul Lantern",
-  "block.toggle-lanterns.unlit_copper_lantern": "Unlit Copper Lantern",
-  "block.toggle-lanterns.unlit_waxed_copper_lantern": "Unlit Waxed Copper Lantern",
-  "block.toggle-lanterns.unlit_exposed_copper_lantern": "Unlit Exposed Copper Lantern",
-  "block.toggle-lanterns.unlit_waxed_exposed_copper_lantern": "Unlit Waxed Exposed Copper Lantern",
-  "block.toggle-lanterns.unlit_weathered_copper_lantern": "Unlit Weathered Copper Lantern",
-  "block.toggle-lanterns.unlit_waxed_weathered_copper_lantern": "Unlit Waxed Weathered Copper Lantern",
-  "block.toggle-lanterns.unlit_oxidized_copper_lantern": "Unlit Oxidized Copper Lantern",
-  "block.toggle-lanterns.unlit_waxed_oxidized_copper_lantern": "Unlit Waxed Oxidized Copper Lantern"
+  "block.toggle-lanterns.unlit_soul_lantern": "Unlit Soul Lantern"
 }

@@ -1,12 +1,4 @@
 {
   "block.toggle-lanterns.unlit_lantern": "消灯したランタン",
-  "block.toggle-lanterns.unlit_soul_lantern": "消灯した魂のランタン",
-  "block.toggle-lanterns.unlit_copper_lantern": "消灯した銅のランタン",
-  "block.toggle-lanterns.unlit_waxed_copper_lantern": "消灯した錆止めされた銅のランタン",
-  "block.toggle-lanterns.unlit_exposed_copper_lantern": "消灯した風化した銅のランタン",
-  "block.toggle-lanterns.unlit_waxed_exposed_copper_lantern": "消灯した錆止めされた風化した銅のランタン",
-  "block.toggle-lanterns.unlit_weathered_copper_lantern": "消灯した錆びた銅のランタン",
-  "block.toggle-lanterns.unlit_waxed_weathered_copper_lantern": "消灯した錆止めされた錆びた銅のランタン",
-  "block.toggle-lanterns.unlit_oxidized_copper_lantern": "消灯した酸化した銅のランタン",
-  "block.toggle-lanterns.unlit_waxed_oxidized_copper_lantern": "消灯した錆止めされた酸化した銅のランタン"
+  "block.toggle-lanterns.unlit_soul_lantern": "消灯した魂のランタン"
 }

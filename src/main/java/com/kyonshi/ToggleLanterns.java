@@ -3,7 +3,7 @@ package com.kyonshi;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.core.BlockPos;
-import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionResult;
@@ -21,27 +21,12 @@ public class ToggleLanterns implements ModInitializer {
     public static final String MOD_ID = "toggle-lanterns";
     public static final Logger LOGGER = LoggerFactory.getLogger(MOD_ID);
 
-    // 点灯 -> 消灯 の変換マップ
     private static final Map<Block, Block> TO_UNLIT = new HashMap<>();
-    // 消灯 -> 点灯 の変換マップ
     private static final Map<Block, Block> TO_LIT = new HashMap<>();
 
     static {
-        // 鉄ランタン
         registerPair(Blocks.LANTERN, ModBlocks.UNLIT_LANTERN);
         registerPair(Blocks.SOUL_LANTERN, ModBlocks.UNLIT_SOUL_LANTERN);
-
-        // 銅ランタン
-        registerPair(Blocks.COPPER_LANTERN.unaffected(), ModBlocks.UNLIT_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.exposed(), ModBlocks.UNLIT_EXPOSED_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.weathered(), ModBlocks.UNLIT_WEATHERED_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.oxidized(), ModBlocks.UNLIT_OXIDIZED_COPPER_LANTERN);
-
-        // 銅ランタン（錆止め）
-        registerPair(Blocks.COPPER_LANTERN.waxed(), ModBlocks.UNLIT_WAXED_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.waxedExposed(), ModBlocks.UNLIT_WAXED_EXPOSED_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.waxedWeathered(), ModBlocks.UNLIT_WAXED_WEATHERED_COPPER_LANTERN);
-        registerPair(Blocks.COPPER_LANTERN.waxedOxidized(), ModBlocks.UNLIT_WAXED_OXIDIZED_COPPER_LANTERN);
     }
 
     private static void registerPair(Block lit, Block unlit) {
@@ -88,7 +73,7 @@ public class ToggleLanterns implements ModInitializer {
         });
     }
 
-    public static Identifier id(String path) {
-        return Identifier.fromNamespaceAndPath(MOD_ID, path);
+    public static ResourceLocation id(String path) {
+        return new ResourceLocation(MOD_ID, path);
     }
 }
