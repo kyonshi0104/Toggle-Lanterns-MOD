@@ -2,14 +2,6 @@
   "replace": false,
   "values": [
     "toggle-lanterns:unlit_lantern",
-    "toggle-lanterns:unlit_soul_lantern",
-    "toggle-lanterns:unlit_copper_lantern",
-    "toggle-lanterns:unlit_waxed_copper_lantern",
-    "toggle-lanterns:unlit_exposed_copper_lantern",
-    "toggle-lanterns:unlit_waxed_exposed_copper_lantern",
-    "toggle-lanterns:unlit_weathered_copper_lantern",
-    "toggle-lanterns:unlit_waxed_weathered_copper_lantern",
-    "toggle-lanterns:unlit_oxidized_copper_lantern",
-    "toggle-lanterns:unlit_waxed_oxidized_copper_lantern"
+    "toggle-lanterns:unlit_soul_lantern"
   ]
 }
