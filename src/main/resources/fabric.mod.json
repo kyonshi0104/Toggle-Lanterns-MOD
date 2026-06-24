@@ -20,10 +20,13 @@
 			"com.kyonshi.client.ToggleLanternsClient"
 		]
 	},
-	"depends": {
-		"fabricloader": ">=0.19.3",
-		"minecraft": "~1.21.11",
-		"java": ">=21",
-		"fabric-api": "*"
-	}
+  "depends": {
+    "fabricloader": ">=0.15.0",
+    "minecraft": [
+      ">=1.20",
+      "<=1.20.4"
+    ],
+    "java": ">=17",
+    "fabric-api": ">=0.83.0"
+  }
 }
