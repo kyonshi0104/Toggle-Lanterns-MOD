@@ -32,7 +32,7 @@ This mod introduces a simple quality-of-life feature to Minecraft: the ability t
 
 ## Environment & Credits
 - **Platform**: Fabric Loader
-- **Minecraft Version**: 1.21.11
+- **Minecraft Version**: 1.21 - 1.21.1
 - **License**: [MIT](LICENSE)
 - **Developed by**: kyonshi ([kyonshi.com](https://kyonshi.com))
 
