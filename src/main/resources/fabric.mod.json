@@ -6,7 +6,7 @@
 	"description": "Allows players to toggle lanterns on and off by right-clicking them.",
 	"authors": ["kyonshi"],
 	"contact": {
-		"homepage": "https://kyonshi.com/contact",
+		"homepage": "https://kyonshi.com/contact/",
 		"sources": "https://github.com/kyonshi0104/Toggle-Lanterns-MOD"
 	},
 	"license": "MIT",
